@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wordle</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header>
+    <button id="settings-btn" class="icon-btn" title="Settings">&#9881;</button>
+    <h1>Wordle</h1>
+    <button id="stats-btn" class="icon-btn" title="Statistics">&#128202;</button>
+  </header>
+
+  <div id="toast-area"></div>
+
+  <!-- Fireworks canvas (full-screen, behind modals) -->
+  <canvas id="fireworks"></canvas>
+
+  <!-- Win celebration overlay -->
+  <div id="win-overlay" class="hidden">
+    <div id="win-message"></div>
+  </div>
+
+  <main>
+    <div id="board"></div>
+  </main>
+
+  <!-- ── Answer Modal (shown on loss before stats) ──────────────── -->
+  <div id="answer-modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="answer-label">The word was</div>
+      <div id="answer-word"></div>
+      <div class="modal-actions">
+        <button id="answer-stats-btn" class="btn-primary">See Stats</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Stats Modal ─────────────────────────────────────────────── -->
+  <div id="stats-modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Statistics">
+    <div class="modal-box">
+      <button class="modal-close" id="stats-close" aria-label="Close">&#10005;</button>
+      <h2>Statistics</h2>
+      <div class="stat-grid">
+        <div class="stat"><span id="stat-played">0</span><label>Played</label></div>
+        <div class="stat"><span id="stat-win-pct">0</span><label>Win %</label></div>
+        <div class="stat"><span id="stat-streak">0</span><label>Current Streak</label></div>
+        <div class="stat"><span id="stat-max-streak">0</span><label>Max Streak</label></div>
+      </div>
+      <h3>Guess Distribution</h3>
+      <div id="distribution"></div>
+      <div class="modal-actions">
+        <button id="new-game-random" class="btn-primary">Random Word</button>
+        <button id="stats-close-btn" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Settings Modal ─────────────────────────────────────────── -->
+  <div id="settings-modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Settings">
+    <div class="modal-box">
+      <button class="modal-close" id="settings-close" aria-label="Close">&#10005;</button>
+      <h2>Settings</h2>
+      <div class="setting-row">
+        <div>
+          <div class="setting-name">Hard Mode</div>
+          <div class="setting-desc">Green and yellow hints must be used in future guesses</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="hard-mode-toggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="modal-actions">
+        <button id="new-game-daily" class="btn-primary">Daily Word</button>
+        <button id="settings-close-btn" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/game.js"></script>
+</body>
+</html>
