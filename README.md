@@ -1,4 +1,4 @@
-# 🟩 Wordle Clone
+# 🟩 Wordle 
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
